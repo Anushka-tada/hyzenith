@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Gustosa Foods - Top Quality Fox Nuts - Gustosa Foods",
+  title: "Hyzenith",
   description: "",
 };
 
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
 
-         <link rel="icon" type="image/png" href="/assets/favicon.png" />
+         {/* <link rel="icon" type="image/png" href="/assets/favicon.png" /> */}
 
       <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
