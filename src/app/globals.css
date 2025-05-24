@@ -357,6 +357,11 @@ body {
   transform: scale(1.05);
 }
 
+@media (max-width:1091px) {
+   .most-popular-carousel{
+  width: 95%;
+}
+}
 .carousel-btn {
   background: none;
   border: none;
@@ -384,12 +389,31 @@ body {
 
 .product-img {
   width: 70%;
-  height: 123px;
+  height: 153px;
   display: flex;
   justify-self: center;
   margin-bottom: 20px;
 }
+@media (max-width:425px) {
+      .product-img {
+  width: 70%;
+  height: 120px;
+}
+}
 
+.product-img-sell {
+  width: 70%;
+  height: 183px;
+  display: flex;
+  justify-self: center;
+  margin-bottom: 20px;
+}
+@media (max-width:425px) {
+      .product-img-sell {
+  width: 70%;
+  height: 150px;
+}
+}
 .add-to-cart {
   background-color: var(--primary-color);
   color: white;
@@ -519,7 +543,7 @@ body {
   }
 
   .product-card2 {
-    width: 40%;
+    width: 44%;
     /* Show 1 card at a time */
   }
 
@@ -620,6 +644,7 @@ body {
 
 .feature-product p {
   font-family: var(--font-secondary);
+  font-size: 17px;
 }
 
 .featured h3 {
@@ -771,10 +796,10 @@ body {
 
 .daily-sell1 {
   /* background: url("https://png.pngtree.com/png-clipart/20231017/original/pngtree-hygiene-products-grocery-3d-illustration-png-image_13327281.png"); */
-background: url("/assets/hygiene3.png");
+background: url("https://t4.ftcdn.net/jpg/08/93/04/79/240_F_893047961_5zsZLFAoKF6JJdNWVBVhKzfLMfgTfBAr.jpg") no-repeat ;
   /* height: 470px; */
   background-color: #dfe4ed;
-  background-position: contain;
+  background-size: cover !important;
   padding: 25px !important;
 }
 
@@ -796,14 +821,17 @@ background: url("/assets/hygiene3.png");
 
 .daily-sells h1 {
   font-family: var(--font-primary);
+  
 }
 
 .daily-sell1 h3 {
   font-family: var(--font-secondary);
+  text-shadow: 1px 1px 2px rgba(134, 134, 134, 0.8);
 }
 
 .daily-sell p {
   font-family: var(--font-secondary);
+    text-shadow: 1px 1px 2px rgba(134, 134, 134, 0.8);
 }
 
 .daily-product-card {
@@ -833,11 +861,12 @@ background: url("/assets/hygiene3.png");
 .category1 {
 
   font-weight: 500;
-  font-size: 17px;
+  font-size: 14px;
+  color: #606060;
 }
 
 .description {
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .daily-product-card:hover .wishlist-icon {
@@ -920,7 +949,8 @@ background: url("/assets/hygiene3.png");
   margin-top: 120px;
   position: relative;
   padding: 8% 10%;
-  background: url("https://neobees.com/wp-content/uploads/2025/01/Neo-Web-Banner.jpg");
+  /* background: url("https://neobees.com/wp-content/uploads/2025/01/Neo-Web-Banner.jpg"); */
+  background: url("/assets/testimonials.jpg");
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -963,7 +993,7 @@ background: url("/assets/hygiene3.png");
 }
 
 .testi-h {
-  color: var(--secondary-color);
+  color: white;
   margin-right: 10vw;
 }
 
@@ -1952,7 +1982,7 @@ background: url("/assets/hygiene3.png");
   padding: 13px 15px;
   border-end-end-radius: 15px;
   border-end-start-radius: 15px;
-  min-height: 221px;
+  min-height: 145px;
 }
 
 @media (max-width:450px) {

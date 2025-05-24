@@ -155,7 +155,7 @@ useEffect(() => {
       <div className="most-popular d-flex flex-column align-items-center">
         <p className="mb-0">Most Popular</p>
         <h1 className="text-center mx-2">Discover flavours in demand</h1>
-        <div className="carousel-container d-flex gap-1">
+        <div className="carousel-container most-popular-carousel d-flex gap-1">
           <button onClick={prevSlide} className="carousel-btn">
             <img src="/assets/back.png" alt="Previous" className="popular-btn" />
           </button>
@@ -171,16 +171,17 @@ useEffect(() => {
           className="product-img"
         />
       </a>
-      <p className="product-descrip">{product.name}</p>
-        <p className="category1">{product.tags?.join(", ")}</p>
+     
+        <p className="category1 mb-1">{product.tags?.join(", ")}</p>
+         <p className="product-descrip mb-2">{product.name}</p>
       <div className="wishlist-icon">
         <img src="https://cdn-icons-png.flaticon.com/128/13369/13369080.png" />
       </div>
     </div>
     <div>
       <div className="price d-flex gap-1">
-        <p className="price1-home">₹{product.offerPrice}</p>
-        <p className="price2-home">₹{product.price}</p>
+        <p className="price1-home mb-1">₹{product.offerPrice}</p>
+        <p className="price2-home mb-1">₹{product.price}</p>
       </div>
       <button className="add-to-cart">Add to Cart</button>
     </div>

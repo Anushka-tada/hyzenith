@@ -317,7 +317,7 @@
 import React, { useState, useEffect , useContext } from "react";
 import Navbar from "../Components/Navbar";
 import PriceFilter from "../Components/PriceFilter";
-import { getCategory, getProductServ , addProductToCart } from "../services/product.service";
+import { getCategory, getProductServ , addProductToCart , addProductToWishlist} from "../services/product.service";
 import { useRouter } from "next/navigation";
 import Footer from "../Components/Footer";
 import { LoggedDataContext } from '../context/Context';
@@ -390,10 +390,11 @@ const page = () => {
     fetchCategory();
   }, []);
 
+
   // add to cart logic
   const [cartQty, setCartQty] = useState({});
 
-  const userId = loggedUserData?.userId || '';
+  const userId = loggedUserData?._id || '';
 
  const addToCartApiCall = async (productId) => {
   const payload = {
@@ -446,7 +447,24 @@ const handleDecrease = (productId) => {
   });
 };
 
+//add to wishlist logic
 
+
+ const handleAddToWishlist = async (productId) => {
+       const payload = {
+    userId, 
+  };  
+  console.log("in  add to wishlist api call function")
+  const token = loggedUserData?.token
+  console.log("user token  " + token)
+  
+  try {
+    await addProductToCart(payload, productId , token); // productId passed as param
+    console.log("Product added to wishlist:", productId);
+  } catch (error) {
+    console.error("Error adding to wishlist:", error);
+  }
+};
 
 
   return (
@@ -569,8 +587,9 @@ const handleDecrease = (productId) => {
                     </div>
 
                     <div className="inner-product d-flex flex-column justify-content-between">
-                      <p className="category1 mb-0">{product.name}</p>
-                      <p className="description">{product.tags?.join(", ")}</p>
+
+                      <p className="category1 mb-0">₹{product.tags?.join(", ")}</p>
+                    <p className="description mb-1" >₹{product.name}</p>
 
                       <div className="product-rating d-flex align-items-center gap-1">
                         {/* Star icons as before */}
@@ -598,7 +617,9 @@ const handleDecrease = (productId) => {
                       </div>
 
                       <div className="shop-wishlist-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/128/13369/13369080.png" />
+                        <img src="https://cdn-icons-png.flaticon.com/128/13369/13369080.png"
+                              onClick={() => handleAddToWishlist(product._id)}
+                        />
                       </div>
 
                       <div className="price d-flex gap-1">

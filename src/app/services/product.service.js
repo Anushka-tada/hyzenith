@@ -78,3 +78,19 @@ export async function addProductToCart(payload, productId, token) {
   return res.data;
 }
 
+// add to wishlist
+
+export async function addProductToWishlist(payload, productId, token) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,  
+    },
+  };
+
+  const res = await axios.post(
+    `${BASE_URL}user/add-to-wishlist/${productId}`,
+    payload,
+    config
+  );
+  return res.data;
+}

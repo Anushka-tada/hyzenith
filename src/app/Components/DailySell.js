@@ -153,27 +153,27 @@ const DailySell = () => {
             </div>
           </div>
 
-          {products.map((product, index) => (
-            <div className="daily-sell" key={index}>
-              <div className="daily-product-card d-flex flex-column justify-content-between">
-                <div>
-                  <img src={product.productHeroImage} className="product-img" />
-                    <p className="category1">{product.tags?.join(", ")}</p>
-                  <p className="description">{product.name}</p>
-                  <div className="wishlist-icon">
-                    <img src={product.wishlistIcon} />
-                  </div>
-                </div>
-                <div>
-                  <div className="price d-flex gap-1">
-                    <p className="price2">{product.offerPrice}</p>
-                    <p className="price1">{product.price}</p>
-                  </div>
-                  <button className="addCart-btn"> + Add to Cart</button>
-                </div>
-              </div>
-            </div>
-          ))}
+         {products.slice(0, 3).map((product, index) => (
+  <div className="daily-sell" key={index}>
+    <div className="daily-product-card d-flex flex-column justify-content-between">
+      <div>
+        <img src={product.productHeroImage} className="product-img-sell" />
+        <p className="category1 mb-1">{product.tags?.join(", ")}</p>
+        <p className="description">{product.name}</p>
+        <div className="wishlist-icon">
+          <img src={product.wishlistIcon} />
+        </div>
+      </div>
+      <div>
+        <div className="price d-flex gap-1">
+          <p className="price2">₹{product.offerPrice}</p>
+          <p className="price1">₹{product.price}</p>
+        </div>
+        <button className="addCart-btn"> + Add to Cart</button>
+      </div>
+    </div>
+  </div>
+))}
 
         </div>
       </div>

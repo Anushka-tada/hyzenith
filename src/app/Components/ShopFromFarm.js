@@ -106,15 +106,15 @@ const ShopFromFarm = () => {
                 className="product-img"
                 alt={product.description}
               />
-              <p className="product-descrip mb-3">{product.name}</p>
+              <p className="product-descrip mb-2">{product.name}</p>
               <div className="wishlist-icon">
                 <img src="https://cdn-icons-png.flaticon.com/128/6051/6051092.png" />
               </div>
             </div>
             <div>
               <div className="price d-flex gap-1">
-                <p className="price1">{product.price}</p>
-                <p className="price2">{product.offerPrice}</p>
+                <p className="price1">₹{product.price}</p>
+                <p className="price2">₹{product.offerPrice}</p>
               </div>
               <button className="add-to-cart">Add to Cart</button>
             </div>
