@@ -123,7 +123,7 @@ const BulkOrderPage = () => {
             <div className="bulk-content ">
               <div>
                 <h3 className="mb-2">
-                  Order Makhana in Bulk – Premium Quality for Every Occasion
+                  Order hyzenith products in Bulk – Premium Quality for Every Occasion
                 </h3>
 
                 <p>
@@ -139,7 +139,7 @@ const BulkOrderPage = () => {
           <div className="bulk-form  d-flex flex-column align-items-center">
             
             <form>
-                <h2 className="mb-4">Place Your Bulk Makhana Order</h2>
+                <h2 className="mb-4">Place Your Bulk hyzenith product Order</h2>
               {/* First Name & Last Name */}
               <div className="row mb-2">
                 <div className="col">

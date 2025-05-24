@@ -5,14 +5,14 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const cardsData = [
   {
-    title: "What is Suta in Makhana?",
+    title: "What is Hyzenith?",
     content:
-      "What is Suta in Makhana? Soota is a unit of length rarely used in daily life but essential in the",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
   },
   {
-    title: "A Complete Guide to Makhana Grading and Sizing for New Businesses",
+    title: "A Complete Guide to Hyzenith product Grading and Sizing for New Businesses",
     content:
-      "Table of Contents Makhana size is the most important thing you need to know if you’re planning to start a",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
   },
   {
     title: "Hello World!",
@@ -58,7 +58,7 @@ const prev = () => {
 
   return (
     <div className="faq-section text-center py-5">
-      <h2 className="mb-4">Must Read for Makhana Business</h2>
+      <h2 className="mb-4">Must Read for Hyzenith Business</h2>
 
       <div className="d-flex justify-content-center align-items-center flex-wrap">
         {/* Left Icon */}

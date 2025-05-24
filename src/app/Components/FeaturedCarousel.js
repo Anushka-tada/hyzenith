@@ -81,28 +81,44 @@
 
 // export default FeaturedCarousel;
 
+"use Client"
 
+import { getCategory } from "../services/product.service";
 import React, { useState, useEffect } from "react";
 
-const products = [
-  { id: 1, name: "Flavoured Makhana", image: "https://gustosafoods.com/wp-content/uploads/2024/02/Chatpata_Masala-a-png.png" },
-  { id: 2, name: "Sample Makhana", image: "https://gustosafoods.com/wp-content/uploads/2024/10/6-plus-hp-1024x1024.png" },
-  { id: 3, name: "Raw Makhana", image: "https://gustosafoods.com/wp-content/uploads/2024/10/6-suta-plus-hp.png" },
-  // { id: 4, name: "Pet Care", image: "https://freshcart-next-js.vercel.app/images/category/category-pet-care.jpg" },
-  // { id: 5, name: "Fruits & Vegetables", image: "https://freshcart-next-js.vercel.app/images/category/category-fruits-vegetables.jpg" },
-  // { id: 6, name: "Cold Drink Juices", image: "https://freshcart-next-js.vercel.app/images/category/category-cold-drinks-juices.jpg" },
-  // { id: 7, name: "Instant Food", image: "https://freshcart-next-js.vercel.app/images/category/category-instant-food.jpg" },
-  // { id: 8, name: "Tea Coffee & Drinks", image: "https://freshcart-next-js.vercel.app/images/category/category-tea-coffee-drinks.jpg" },
-  // { id: 9, name: "Snacks & Munchies", image: "https://freshcart-next-js.vercel.app/images/category/category-snack-munchies.jpg" },
-  // { id: 10, name: "Bakery & Buiscuits", image: "https://freshcart-next-js.vercel.app/images/category/category-bakery-biscuits.jpg" },
-  // { id: 11, name: "Dairy, Bread & Eggs", image: "https://freshcart-next-js.vercel.app/images/category/category-dairy-bread-eggs.jpg" },
-  // { id: 12, name: "Atta, Rice & Dal", image: "https://freshcart-next-js.vercel.app/images/category/category-atta-rice-dal.jpg" },
-];
+// const products = [
+//   { id: 1, name: "Flavoured Makhana", image: "https://gustosafoods.com/wp-content/uploads/2024/02/Chatpata_Masala-a-png.png" },
+//   { id: 2, name: "Sample Makhana", image: "https://gustosafoods.com/wp-content/uploads/2024/10/6-plus-hp-1024x1024.png" },
+//   { id: 3, name: "Raw Makhana", image: "https://gustosafoods.com/wp-content/uploads/2024/10/6-suta-plus-hp.png" },
+// ];
 
+ 
 const FeaturedCarousel = () => {
+
+
   const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4); // Default visible count is 4
   const [visibleProducts, setVisibleProducts] = useState([]);
+
+
+   const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const response = await getCategory();
+        if (response?.data?.length > 0) {
+          setProducts(response.data);
+         console.log("all categories:", response.data); // Properly logs the whole object
+
+        }
+      } catch (error) {
+        console.error("Failed to fetch banners", error);
+      }
+    };
+
+    fetchCategory();
+  }, []);
 
   // 1️⃣ Update visible count based on screen size
   useEffect(() => {
@@ -111,7 +127,7 @@ const FeaturedCarousel = () => {
       if (width <= 600) setVisibleCount(2); // For mobile
       else if (width <= 800) setVisibleCount(3); // For tablets
       else if (width <= 1025) setVisibleCount(3); // For larger tablets or small desktops
-      else setVisibleCount(3); // For large desktops
+      else setVisibleCount(5); // For large desktops
     };
 
     updateVisibleCount();
@@ -126,7 +142,7 @@ const FeaturedCarousel = () => {
       .slice(startIndex, end)
       .concat(products.slice(0, Math.max(0, end - products.length)));
     setVisibleProducts(visible);
-  }, [startIndex, visibleCount]);
+  }, [startIndex, visibleCount , products]);
 
   // 3️⃣ Navigation (Next and Previous slide)
   const nextSlide = () => {
@@ -141,7 +157,7 @@ const FeaturedCarousel = () => {
     <div className="featured ">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} className="mb-5">
         <h3 className="ms-md-5 ">Featured Categories</h3>
-        <div className="d-flex gap-3 d-sm-none d-block">
+        <div className="d-flex gap-3 d-lg-none d-block">
           <button onClick={prevSlide} className="carousel-btn2">
             <img src="/assets/back.png" alt="Previous" />
           </button>
@@ -153,7 +169,7 @@ const FeaturedCarousel = () => {
 
       <div className="featured-carousel ms-md-5" style={{ display: "flex", gap: "20px", marginTop: "10px", flexWrap: "wrap", justifyContent: "start" }}>
         {visibleProducts.map((product) => (
-          <div key={product.id} className="feature-product" style={{ textAlign: "center" }}>
+          <div key={product._id} className="feature-product" style={{ textAlign: "center" }}>
             <img src={product.image} alt={product.name} width="100" height="100" />
             <p className="mb-0 mt-2">{product.name}</p>
           </div>

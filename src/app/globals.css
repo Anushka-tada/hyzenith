@@ -13,8 +13,8 @@
 :root {
   --primary-color: #DC2F21;
   --secondary-color: #DC2F21;
-  --third-color: #677FB2;
-  --backround-color: #f3f5fb;
+  --third-color: #4975bc;
+  --backround-color: #f3f7fb;
 
 }
 
@@ -411,6 +411,7 @@ body {
 .most-popular>p {
   color: var(--third-color);
   font-size: 30px;
+  font-family: var(--font-secondary);
 }
 
 .most-popular>h1 {
@@ -418,6 +419,16 @@ body {
   margin-top: 10px;
   margin-bottom: 35px;
   font-family: var(--font-primary);
+}
+.price1-home{
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 18px;
+}
+.price2-home{
+   text-decoration: line-through;
+  color: grey;
+  font-size: 18px;
 }
 
 .price1 {
@@ -508,7 +519,7 @@ body {
   }
 
   .product-card2 {
-    width: 100%;
+    width: 40%;
     /* Show 1 card at a time */
   }
 
@@ -527,7 +538,7 @@ body {
 
 @media (min-width: 768px) and (max-width: 991.98px) {
   .product-card2 {
-    width: 80% !important;
+    width: 40% !important;
     /* Show 1 card at a time */
   }
 }
@@ -731,6 +742,7 @@ body {
   font-family: var(--font-primary);
   margin-bottom: 50px;
 }
+.product-card2
 
 /* Daily best sells section */
 .daily-sells,
@@ -741,6 +753,9 @@ body {
   margin-right: 80px;
   margin-bottom: 80px;
 
+}
+.daily-sells{
+  padding: 5%;
 }
 
 .from-farm {
@@ -755,9 +770,11 @@ body {
 }
 
 .daily-sell1 {
-  background: url("https://media.istockphoto.com/id/1250254277/photo/makhana-or-lotus-seed.jpg?s=612x612&w=0&k=20&c=lkG3E1jix3R5WDtwcnGTbfumVz6vpo21ih_G5X3DDYw=");
+  /* background: url("https://png.pngtree.com/png-clipart/20231017/original/pngtree-hygiene-products-grocery-3d-illustration-png-image_13327281.png"); */
+background: url("/assets/hygiene3.png");
   /* height: 470px; */
-  background-position: cover;
+  background-color: #dfe4ed;
+  background-position: contain;
   padding: 25px !important;
 }
 
@@ -903,7 +920,7 @@ body {
   margin-top: 120px;
   position: relative;
   padding: 8% 10%;
-  background: url("https://gustosafoods.com/wp-content/uploads/2024/02/makhana-2.jpg");
+  background: url("https://neobees.com/wp-content/uploads/2025/01/Neo-Web-Banner.jpg");
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -1132,7 +1149,8 @@ body {
 
 .product-img-small {
   margin-top: 15px;
-  width: 64%;
+  width: 100%;
+  height: 20%;
   border-radius: 8px;
 }
 
@@ -1574,7 +1592,7 @@ body {
 
 .category:hover {
   color: var(--secondary-color);
-  border-bottom: 1px solid rgb(183, 240, 132);
+  border-bottom: 1px solid var(--secondary-color);
 }
 
 .category p {
@@ -1711,36 +1729,35 @@ body {
   text-decoration: none;
 }
 
-.quantity-selector {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 12px;
-  background-image: linear-gradient(to right, var(--primary-color) 0%, #7ce6a3 51%, var(--primary-color) 100%);
-  background-size: 200% auto;
-  color: white;
-  box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
+.quantity-controller {
+  margin-top: 10px;
   width: 100%;
-  transition: 0.5s;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, var(--primary-color) 0%, #fe4e4e 51%, var(--primary-color) 100%);
+  color: white;
   font-family: var(--font-secondary);
-  border: none;
+  font-weight: bold;
+  box-shadow: 0 0 20px #eee;
+  user-select: none;
+   padding: 3px;
 }
 
 .qty-btn {
-  background: none;
+  background: transparent;
   border: none;
   color: white;
   font-size: 20px;
-  font-weight: bold;
+  padding: 0 12px;
   cursor: pointer;
-  width: 30px;
+  user-select: none;
 }
 
-.qty-number {
-  font-size: 16px;
-  font-weight: bold;
+.quantity-controller span {
+  min-width: 20px;
+  text-align: center;
+  font-size: 18px;
 }
+
 
 .shop-sections {
   gap: 6%;
@@ -1931,7 +1948,7 @@ body {
 }
 
 .inner-product {
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   padding: 13px 15px;
   border-end-end-radius: 15px;
   border-end-start-radius: 15px;

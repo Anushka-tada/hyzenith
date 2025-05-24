@@ -45,3 +45,36 @@ export const getCategory = async () => {
     throw error; 
   }
 };
+
+
+// // add to cart
+
+
+// export async function addProductToCart(formData , id) {
+//   try {
+//     const res = await axios.post(BASE_URL+`user/add-to-cart/${id}` , formData);
+//      console.log(res.data.data);
+//     return res.data.data;
+   
+//   } 
+//   catch (error) {
+//     throw new Error('Product not found');
+//   }
+// }
+
+
+export async function addProductToCart(payload, productId, token) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,  
+    },
+  };
+
+  const res = await axios.post(
+    `${BASE_URL}user/add-to-cart/${productId}`,
+    payload,
+    config
+  );
+  return res.data;
+}
+

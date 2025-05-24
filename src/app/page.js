@@ -1,4 +1,5 @@
 "use client";
+
 import DailySell from "./Components/DailySell";
 import FeaturedCarousel from "./Components/FeaturedCarousel";
 import Navbar from "./Components/Navbar";
@@ -8,58 +9,78 @@ import Faq from "./Components/Faq";
 import ShopFromFarm from "./Components/ShopFromFarm";
 import Footer from "./Components/Footer";
 import HeroSection from "./Components/HeroSection";
+import { getProductServ } from "./services/product.service";
 
 export default function Home() {
-  const products = [
-    {
-      id: 1,
-      image:
-        "https://gustosafoods.com/wp-content/uploads/2024/10/4-plus-300x300.png",
-      description: "4 Suta Plus Makhana| (12mm and above)| 200gm",
-      price1: "₹300.00",
-      price2: "₹299.00",
-    },
-    {
-      id: 2,
-      image:
-        "https://gustosafoods.com/wp-content/uploads/2024/10/6-plus-hp-600x600.png",
-      description: "S6.5 Suta Plus(20.7mm above)| Handpicked Makhana|200gm",
-      price1: "₹499.00",
-      price2: "₹499.00",
-    },
-    {
-      id: 3,
-      image:
-        "	https://gustosafoods.com/wp-content/uploads/2024/10/5-plus-Handpicked-300x300.jpg",
-      description: "5 Suta Plus Handpicked Makhana(15.8mm and above)| 200gm",
-      price1: "₹349.00 ",
-      price2: "₹299.00",
-    },
-    {
-      id: 4,
-      image:
-        "https://gustosafoods.com/wp-content/uploads/2024/10/2-300x300.png",
-      description: "Yogibhog Makhana 500gm (250gm x 2)",
-      price1: "₹1,400.00",
-      price2: "₹799.00",
-    },
-    {
-      id: 5,
-      image:
-        "https://gustosafoods.com/wp-content/uploads/2024/10/3-300x300.png",
-      description: "Yogibhog | Premium Makhana Big Size 250gm",
-      price1: "₹700.00",
-      price2: "₹499.00",
-    },
-    {
-      id: 6,
-      image:
-        "https://gustosafoods.com/wp-content/uploads/2024/02/Peri-Peri-a--300x300.png",
-      description: "Frisky Roasted Makhana(Fox Nut), Peri Peri, jar - 70gm",
-      price1: "₹199.00",
-      price2: "₹198.00",
-    },
-  ];
+
+  // const products = [
+
+  //   {
+  //     id: 1,
+  //     image:
+  //       "https://gustosafoods.com/wp-content/uploads/2024/10/4-plus-300x300.png",
+  //     description: "4 Suta Plus Makhana| (12mm and above)| 200gm",
+  //     price1: "₹300.00",
+  //     price2: "₹299.00",
+  //   },
+  //   {
+  //     id: 2,
+  //     image:
+  //       "https://gustosafoods.com/wp-content/uploads/2024/10/6-plus-hp-600x600.png",
+  //     description: "S6.5 Suta Plus(20.7mm above)| Handpicked Makhana|200gm",
+  //     price1: "₹499.00",
+  //     price2: "₹499.00",
+  //   },
+  //   {
+  //     id: 3,
+  //     image:
+  //       "	https://gustosafoods.com/wp-content/uploads/2024/10/5-plus-Handpicked-300x300.jpg",
+  //     description: "5 Suta Plus Handpicked Makhana(15.8mm and above)| 200gm",
+  //     price1: "₹349.00 ",
+  //     price2: "₹299.00",
+  //   },
+  //   {
+  //     id: 4,
+  //     image:
+  //       "https://gustosafoods.com/wp-content/uploads/2024/10/2-300x300.png",
+  //     description: "Yogibhog Makhana 500gm (250gm x 2)",
+  //     price1: "₹1,400.00",
+  //     price2: "₹799.00",
+  //   },
+  //   {
+  //     id: 5,
+  //     image:
+  //       "https://gustosafoods.com/wp-content/uploads/2024/10/3-300x300.png",
+  //     description: "Yogibhog | Premium Makhana Big Size 250gm",
+  //     price1: "₹700.00",
+  //     price2: "₹499.00",
+  //   },
+  //   {
+  //     id: 6,
+  //     image:
+  //       "https://gustosafoods.com/wp-content/uploads/2024/02/Peri-Peri-a--300x300.png",
+  //     description: "Frisky Roasted Makhana(Fox Nut), Peri Peri, jar - 70gm",
+  //     price1: "₹199.00",
+  //     price2: "₹198.00",
+  //   },
+  // ];
+
+  const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+      const fetchProducts = async () => {
+        try {
+          const response = await getProductServ();
+          console.log(response.data);
+          setProducts(response.data || []);
+        } catch (error) {
+          console.error("Error loading products:", error);
+        }
+      };
+  
+      fetchProducts();
+    }, []);
+   
 
   const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
@@ -87,8 +108,10 @@ useEffect(() => {
     .slice(startIndex, end)
     .concat(products.slice(0, Math.max(0, end - products.length)));
   setVisibleProducts(visible);
+  console.log("Visible Products:", visibleProducts);
+
 // Remove products from dependencies
-}, [startIndex, visibleCount]);
+}, [startIndex, visibleCount , products]);
 
 
   // 3️⃣ Navigation
@@ -124,27 +147,6 @@ useEffect(() => {
       <Navbar />
 
       {/* hero section */}
-
-      {/* <div
-        className="hero-section d-flex flex-column justify-content-center"
-        style={{
-          backgroundImage: `url(${currentImage})`,
-          backgroundSize: "cover",
-        }}
-      >
-        <div className="hero-section1">
-          <h1>
-            Say goodbye to bland makhanas; it's time to savor the flavors.
-          </h1>
-          <p className="fs-6 fs-lg-5 mb-4">
-            Get extra 5% off on flavoured makhanas.
-          </p>
-          <div className="shop-now d-flex gap-2 align-items-center justify-content-center my-3">
-            <p className="fs-5 mb-0 text-white">Shop Now</p>
-            <img src="/assets/next.png" alt="Next Icon" />
-          </div>
-        </div>
-      </div> */}
       <HeroSection/>
    
 
@@ -159,28 +161,32 @@ useEffect(() => {
           </button>
 
           <div className="products-grid">
-            {visibleProducts.map((product) => (
-              <div key={product.id} className="product-card d-flex flex-column justify-content-between" >
-                <div>
-                 <a href="/Product"> <img
-                    src={product.image}
-                    alt={product.description}
-                    className="product-img"
-                  /></a>
-                  <p className="product-descrip">{product.description}</p>
-                  <div className="wishlist-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/128/13369/13369080.png" />
-                  </div>
-                </div>
-                <div>
-                  <div className="price d-flex gap-1">
-                    <p className="price1">{product.price1}</p>
-                    <p className="price2">{product.price2}</p>
-                  </div>
-                  <button className="add-to-cart">Add to Cart</button>
-                </div>
-              </div>
-            ))}
+          {visibleProducts.map((product) => (
+  <div key={product._id} className="product-card d-flex flex-column justify-content-between">
+    <div>
+      <a href={`/Product/${product._id}`}>
+        <img
+          src={product.productHeroImage}
+          alt={product.name}
+          className="product-img"
+        />
+      </a>
+      <p className="product-descrip">{product.name}</p>
+        <p className="category1">{product.tags?.join(", ")}</p>
+      <div className="wishlist-icon">
+        <img src="https://cdn-icons-png.flaticon.com/128/13369/13369080.png" />
+      </div>
+    </div>
+    <div>
+      <div className="price d-flex gap-1">
+        <p className="price1-home">₹{product.offerPrice}</p>
+        <p className="price2-home">₹{product.price}</p>
+      </div>
+      <button className="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+))}
+
           </div>
 
           <button onClick={nextSlide} className="carousel-btn">

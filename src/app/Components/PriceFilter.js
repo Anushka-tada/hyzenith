@@ -87,7 +87,7 @@ import { Range } from 'react-range';
 const PriceFilter = ({ values, onChange }) => {
   const STEP = 1;
   const MIN = 0;
-  const MAX = 130000;
+  const MAX = 1000;
 
   return (
     <div className="price-filter" style={{ width: '100%', maxWidth: '300px', margin: '0 auto' }}>

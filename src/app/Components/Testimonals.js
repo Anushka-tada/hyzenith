@@ -114,13 +114,8 @@ const Testimonals = () => {
                   <div className="card   text-center d-flex flex-column align-items-center">
                     <div className="testi-card">
                         <p className="mb-3 testimonal-para">
-                      "I recently tried Gustoosa Food's raw makhana and was
-                      blown away by the quality and taste. The makhana was fresh
-                      and crunchy, and had a subtle nutty flavor that was simply
-                      delicious. I love that it's a healthy snack option that I
-                      can feel good about eating, and I'll definitely be
-                      ordering more in the future! "
-                    </p>
+                    I recently started using Hyzenith’s natural hygiene products and I’m genuinely impressed. They’re gentle on the skin, cleanse effectively, and have a mild, refreshing fragrance. The fact that they’re made from organic ingredients makes me feel even better about using them daily. It’s a perfect blend of safety, purity, and comfort
+                                        </p>
                     <h6 className="mb-0 text-primary">Shreya Jain</h6>
                     <small className="text-muted">Student</small>
                     </div>
@@ -132,11 +127,7 @@ const Testimonals = () => {
                   <div className="card   text-center d-flex flex-column align-items-center">
                    <div  className="testi-card" >
                      <p className="mb-3 testimonal-para">
-                      " I'm a big fan of Gustoosa Food's roasted makhana snacks.
-                      The flavors are so unique and tasty, and they're the
-                      perfect snack to satisfy my cravings without feeling
-                      guilty. I especially love the cheese and caramel flavors –
-                      they're addictive! "
+                      "I'm a big fan of Hyzenith's hygiene products. They’re thoughtfully designed, super gentle on the skin, and give me a real sense of freshness and confidence. I love how effective they are without using harsh chemicals. My personal favorites are the refreshing wipes and the herbal cleanser – I genuinely can’t imagine my daily routine without them!"
                     </p>
                     <h6 className="mb-0 text-primary">Puneet Rawat</h6>
                     <small className="text-muted">Avid Foodie</small>
