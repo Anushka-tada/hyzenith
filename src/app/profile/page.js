@@ -88,17 +88,29 @@ import { LoggedDataContext } from "../context/Context";
 import Navbar from "../Components/Navbar";
 import MyDetails from "./MyDetails";
 import MyAddress from "./MyAddress";
+import { toast } from "react-toastify";
 
 const Profile = () => {
-  const { loggedUserData } = useContext(LoggedDataContext);
+  const { loggedUserData , updateLoggedUserData  } = useContext(LoggedDataContext);
   const router = useRouter();
 
   const [selectedSection, setSelectedSection] = useState("details");
 
+  // logout 
+
+    useEffect(() => {
+    if (selectedSection === "logout") {
+      updateLoggedUserData(null); 
+      localStorage.removeItem("user"); 
+       toast.success("Logged out successfully!");
+      router.push("/login"); 
+    }
+  }, [selectedSection]);
+
   useEffect(() => {
     if (!loggedUserData) {
       const timer = setTimeout(() => {
-        router.push("/signup");
+        router.push("/login");
       }, 1500);
       return () => clearTimeout(timer);
     }
@@ -124,9 +136,6 @@ const Profile = () => {
         return <p>Cart Component</p>;
       case "wishlist":
         return <p>Wishlist Component</p>;
-      case "logout":
-        // Handle logout logic here if needed
-        return <p>Logging out...</p>;
       default:
         return <MyDetails />;
     }
@@ -153,7 +162,7 @@ const Profile = () => {
             {menuItems.map((item) => (
               <div
                 key={item.key}
-                className={`d-flex gap-3 menu-item ${selectedSection === item.key ? "selected-detail" : ""}`}
+                className={`d-flex  menu-item ${selectedSection === item.key ? "selected-detail" : ""}`}
                 onClick={() => setSelectedSection(item.key)}
                 style={{ cursor: "pointer" }}
               >

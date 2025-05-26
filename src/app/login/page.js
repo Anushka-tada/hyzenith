@@ -92,6 +92,7 @@ import Footer from '../Components/Footer';
 import { useRouter } from 'next/navigation';
 import { logIn } from '../services/authentication.service';
 import { LoggedDataContext } from '../context/Context';
+import { toast } from "react-toastify";
 
 const page = () => {
   const router = useRouter();
@@ -128,17 +129,17 @@ const page = () => {
         //   phoneNumber: res.data.data.phone,
         // };
 
-        updateLoggedUserData(res?.data); // Context will also save to localStorage
+        updateLoggedUserData(res?.data); 
 
-        alert("Login successful!");
+         toast.success(res.message);
         router.push("/");
       } else {
-        alert("data save failed");
+         toast.error(res.message);
         console.log(typeof res.data.statusCode, res.data.statusCode);
       }
     } catch (error) {
       console.log("Login error:", error);
-      alert("Something went wrong during login.");
+         toast.error(error.response?.data?.message);
     }
   };
 

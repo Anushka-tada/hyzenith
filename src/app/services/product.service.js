@@ -4,6 +4,29 @@
 import axios from "axios";
 
 import { BASE_URL } from ".././utils/apibaseurlConfiguration";
+// import { headers } from "next/headers";
+
+// const getConfig = () => {
+//   return {
+//     headers: {
+//       "Content-Type": "multipart/form-data",
+//       Accept: "application/json",
+//       Authorization: Bearer ${JSON.parse(localStorage.getItem("access_token"))},
+//     },
+//   }
+// }
+
+const userData = JSON.parse(localStorage.getItem("user"))
+
+const getConfig = () => {
+  return{
+    headers:{
+        "Content-Type": "multipart/form-data",
+       Accept: "application/json",
+       Authorization: `Bearer ${userData.token}`,
+    }
+  }
+}
 
 // all products
 
@@ -64,16 +87,13 @@ export const getCategory = async () => {
 
 
 export async function addProductToCart(payload, productId, token) {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,  
-    },
-  };
+   
+  
 
   const res = await axios.post(
     `${BASE_URL}user/add-to-cart/${productId}`,
     payload,
-    config
+    getConfig()
   );
   return res.data;
 }

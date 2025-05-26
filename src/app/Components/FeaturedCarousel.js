@@ -86,12 +86,6 @@
 import { getCategory } from "../services/product.service";
 import React, { useState, useEffect } from "react";
 
-// const products = [
-//   { id: 1, name: "Flavoured Makhana", image: "https://gustosafoods.com/wp-content/uploads/2024/02/Chatpata_Masala-a-png.png" },
-//   { id: 2, name: "Sample Makhana", image: "https://gustosafoods.com/wp-content/uploads/2024/10/6-plus-hp-1024x1024.png" },
-//   { id: 3, name: "Raw Makhana", image: "https://gustosafoods.com/wp-content/uploads/2024/10/6-suta-plus-hp.png" },
-// ];
-
  
 const FeaturedCarousel = () => {
 

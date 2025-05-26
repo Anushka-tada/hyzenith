@@ -6,6 +6,7 @@ import Footer from "../Components/Footer";
 import { useRouter } from 'next/navigation';
 import { signUp } from "../services/authentication.service";
 import { otpSend } from "../services/authentication.service";
+import { toast } from "react-toastify";
 
 const page = () => {
   const router = useRouter();
@@ -51,19 +52,6 @@ const page = () => {
     }));
   };
 
-  // Submit handler
-// const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   try {
-//     const response = await signUp(formData);
-//     console.log("Signup successful:", response);
-//     // Navigate or show success message
-//   } catch (err) {
-//     console.error("Signup failed:", err);
-//     // Show error to user
-//   }
-// };
-
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -87,13 +75,14 @@ const handleSubmit = async (e) => {
 
 
       await otpSend(formData.phone);
-    alert("OTP sent successfully!");
+     toast.success(res.message);
 
      router.push('/otp-verify');
 
   } catch (error) {
    console.error("Signup or OTP failed:", error);
-    alert("Something went wrong. Please try again.");
+    toast.error(error.response?.data?.message);
+
   }
 
 };
@@ -211,7 +200,7 @@ const handleSubmit = async (e) => {
             <p className="signup-p">
               Already have an account?{" "}
               <span className="signin-option fw-bold" onClick={handleLogin}>
-                Sign in
+                Log in
               </span>
             </p>
           </div>

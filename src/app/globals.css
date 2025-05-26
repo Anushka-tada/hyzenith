@@ -663,7 +663,7 @@ body {
 
 .feature-product img {
   width: 100px;
-  height: 100px;
+  height: 128px;
 }
 
 @media (min-width: 768px) {
@@ -1773,7 +1773,7 @@ background: url("https://t4.ftcdn.net/jpg/08/93/04/79/240_F_893047961_5zsZLFAoKF
 }
 
 .qty-btn {
-  background: transparent;
+  background: transparent;  
   border: none;
   color: white;
   font-size: 20px;
@@ -1999,16 +1999,18 @@ background: url("https://t4.ftcdn.net/jpg/08/93/04/79/240_F_893047961_5zsZLFAoKF
 
 .bulk-order-page {
   padding: 3% 7% 7% 7%;
-  height: 100vh;
+
   background-color: #f7f7f7;
 }
 
 .bulk-section {
   width: 50%;
+  height: 100vh;
 }
 
 .bulk-form {
   width: 50%;
+  
 }
 
 .bulk-form form {
@@ -2031,7 +2033,7 @@ background: url("https://t4.ftcdn.net/jpg/08/93/04/79/240_F_893047961_5zsZLFAoKF
 } */
 .bulk-section {
   padding: 3% 3% 0% 3%;
-  background: var(--third-color);
+  background: #e4eeff;
  /* background: linear-gradient(
   359deg,
   #50649b 16%, 
@@ -2057,6 +2059,13 @@ background: url("https://t4.ftcdn.net/jpg/08/93/04/79/240_F_893047961_5zsZLFAoKF
 .bulk-form input,
 .bulk-form label {
   font-family: var(--font-secondary);
+}
+.bulk-content{
+  padding: 5%;
+  /* height: 100%; */
+}
+.bulk-img{
+  width: 80%;
 }
 
 @media (max-width:1024px) {
@@ -2095,7 +2104,7 @@ background: url("https://t4.ftcdn.net/jpg/08/93/04/79/240_F_893047961_5zsZLFAoKF
 
 .bulk-form form {
   background-color: #fff;
-  padding: 25px;
+  padding: 4% 8%;
 
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -2692,6 +2701,46 @@ policy css */
   box-shadow: 0 0 0 2px rgba(42, 185, 87, 0.2);
 }
 
+@media (max-width:1024px) {
+   .editable-input {
+   width: 45%;
+}
+.name{
+   width: 45%;
+}
+}
+@media (max-width: 860px) {
+  .profile-section{
+     flex-wrap: wrap !important;
+  }
+  .profile-left{
+    display: flex;
+    overflow: scroll;
+  }
+  .profile-left{
+  width: 100%;
+  padding: 2% 1%;
+  gap: 3px;
+}
+.profile-right{
+  width: 100%;
+}
+.profile-left h5{
+  font-size: 13px !important;
+}
+.profile-icons{
+  width: 20px;
+  height: 20px;
+}
+.menu-item{
+  gap: 6px !important;
+}
+.profile-left > div{
+ padding: 7px 7px;
+}
+}
+
+
 /* .edit-btn, .save-btn {
   padding: 6px 12px;
   background-color: #f0f0f0;
@@ -2712,7 +2761,9 @@ policy css */
   padding: 10px 10px;
   border-radius: 4px;
 }
-
+.menu-item h5{
+      white-space: nowrap;
+}
 .address-card{
   padding: 3%;
   border-radius: 6px;
@@ -2785,4 +2836,24 @@ policy css */
     width: 100%;
     margin-bottom: 5px;
     padding: 3px 7px;
+}
+
+@media (max-width: 768px) {
+     .address-card{
+  width: 48%;
+}
+.add-address{
+    width: 48%;
+}
+}
+@media (max-width: 520px) {
+     .address-card{
+  width: 100%;
+}
+.add-address{
+    width: 100%;
+}
+}
+.menu-item{
+  gap: 8px !important;
 }

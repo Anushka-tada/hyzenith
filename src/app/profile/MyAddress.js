@@ -203,6 +203,8 @@ import React from 'react'
 import { useEffect } from 'react';
 import { LoggedDataContext } from '../context/Context';
 import { addressCreate , addressList , addressDelete , addressUpdate} from '../services/address.service';
+import { toast } from "react-toastify";
+
 
 const MyAddress = () => {
     const { loggedUserData, updateLoggedUserData } = useContext(LoggedDataContext);
@@ -234,7 +236,7 @@ const MyAddress = () => {
     try {
       const res = await addressCreate(form)
       console.log('Address created:', res)
-      alert("Address saved successfully ")
+     
       setShowForm(false)
       setForm({
         phone: '',
@@ -250,10 +252,11 @@ const MyAddress = () => {
         userId: loggedUserData?._id || '' 
       })
       await fetchAddresses();
+        toast.success(res.message);
 
     } catch (error) {
       console.error("Error creating address:", error)
-      alert("Something went wrong ")
+     toast.error(error.response?.data?.message);
     }
   }
 
@@ -278,12 +281,13 @@ const fetchAddresses = async () => {
 
 const handleDelete = async (id) => {
   try {
-    await addressDelete(id);
-    alert("Address deleted successfully");
+  const res =  await addressDelete(id);
+   
     await fetchAddresses(); // Refresh the list
+       toast.success(res.message);
   } catch (error) {
     console.error("Error deleting address:", error);
-    alert("Failed to delete address");
+    toast.error(error.response?.data?.message);
   }
 };
 
@@ -409,7 +413,7 @@ const handleUpdate = async () => {
 
       <div className='add-address' onClick={() => setShowForm(!showForm)} style={{ cursor: 'pointer' }}>
         <div className='d-flex gap-2'>
-          <img src='https://cdn-icons-png.flaticon.com/128/4315/4315609.png' alt="Add" />
+          <img src='https://cdn-icons-png.flaticon.com/128/10308/10308038.png' alt="Add" />
           <p className='mb-0'>Add new address</p>
         </div>
       </div>

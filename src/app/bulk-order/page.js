@@ -119,8 +119,8 @@ const BulkOrderPage = () => {
         </div>
 
         <div className="bulk-all-sections d-flex justify-content-center align-items-center">
-          <div className="bulk-section">
-            <div className="bulk-content ">
+          {/* <div className="bulk-section">
+            <div className="bulk-content d-flex flex-column justify-content-between ">
               <div>
                 <h3 className="mb-2">
                   Order hyzenith products in Bulk – Premium Quality for Every Occasion
@@ -132,9 +132,9 @@ const BulkOrderPage = () => {
                   tailored to your needs.
                 </p>
               </div>
-              <img src="/assets/bulk3.png" className="img-fluid" />
+              <img src="/assets/bulk.png" className="bulk-img" />
             </div>
-          </div>
+          </div> */}
 
           <div className="bulk-form  d-flex flex-column align-items-center">
             

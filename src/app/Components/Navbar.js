@@ -70,7 +70,7 @@ const Navbar = () => {
    if (loggedUserData) {
       router.push("/profile");
     } else {
-      router.push("/signup");
+      router.push("/login");
     }
   };
 
