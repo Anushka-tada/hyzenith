@@ -89,6 +89,8 @@ import Navbar from "../Components/Navbar";
 import MyDetails from "./MyDetails";
 import MyAddress from "./MyAddress";
 import { toast } from "react-toastify";
+import MyCart from "./MyCart";
+import Wishlist from "./Wishlist";
 
 const Profile = () => {
   const { loggedUserData , updateLoggedUserData  } = useContext(LoggedDataContext);
@@ -131,11 +133,11 @@ const Profile = () => {
       case "address":
         return <MyAddress/>;
       case "orders":
-        return <p>Orders Component</p>;
+        return <p>Orders</p> ;
       case "cart":
-        return <p>Cart Component</p>;
+        return <MyCart/>;
       case "wishlist":
-        return <p>Wishlist Component</p>;
+        return <Wishlist/>;
       default:
         return <MyDetails />;
     }

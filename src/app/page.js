@@ -10,6 +10,9 @@ import ShopFromFarm from "./Components/ShopFromFarm";
 import Footer from "./Components/Footer";
 import HeroSection from "./Components/HeroSection";
 import { getProductServ } from "./services/product.service";
+import axios from "axios";
+
+import { useLocationPincode } from "./context/LocationPincodeContext";
 
 export default function Home() {
 
@@ -65,21 +68,62 @@ export default function Home() {
   //   },
   // ];
 
-  const [products, setProducts] = useState([]);
+   const { setLocationPincode } = useLocationPincode(); 
+  
+  const getLocationAndPincode = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        console.log('Latitude:', latitude, 'Longitude:', longitude);
 
-    useEffect(() => {
-      const fetchProducts = async () => {
         try {
-          const response = await getProductServ();
+          const response = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=b78ab41e554a4896a29df23f1ee4a1b5`);
+          const data = response.data;
+
+          if (data.results && data.results.length > 0) {
+            const components = data.results[0].components;
+            const pincode = components.postcode;
+           
+            console.log(`Your pincode is: ${pincode}`);
+            setPincode(pincode)
+            // return pincode;
+               setLocationPincode(pincode);
+
+          }
+        } catch (error) {
+          console.error('Reverse geocoding failed:', error);
+        }
+      }, (error) => {
+        console.error('Geolocation error:', error);
+       
+      });
+    } else {
+     
+    }
+  };
+
+
+
+  const [products, setProducts] = useState([]);
+  const [pincode, setPincode] = useState();
+
+   const fetchProducts = async () => {
+        try {
+          const response = await getProductServ({pincode});
           console.log(response.data);
           setProducts(response.data || []);
         } catch (error) {
           console.error("Error loading products:", error);
         }
       };
-  
+
+    useEffect(() => {
+       
+      getLocationAndPincode();
       fetchProducts();
-    }, []);
+
+
+    }, [pincode]);
    
 
   const [startIndex, setStartIndex] = useState(0);

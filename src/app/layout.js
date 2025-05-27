@@ -60,6 +60,8 @@ import { LoggedDataProvider } from './context/Context';
 import "./globals.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import { CartProvider } from './context/CartContext';
+import { LocationPincodeProvider } from './context/LocationPincodeContext';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -90,10 +92,15 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <LoggedDataProvider>
-          {children}
-        
-          <ToastContainer position="top-right" autoClose={4000} />
+          <CartProvider>
+            <LocationPincodeProvider> 
+              {children}
+              <ToastContainer position="top-right" autoClose={4000} />
+            </LocationPincodeProvider>
+          </CartProvider>
         </LoggedDataProvider>
+
+
 
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"

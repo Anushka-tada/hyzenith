@@ -321,32 +321,45 @@ import { getCategory, getProductServ , addProductToCart , addProductToWishlist} 
 import { useRouter } from "next/navigation";
 import Footer from "../Components/Footer";
 import { LoggedDataContext } from '../context/Context';
+import { CartContext } from "../context/CartContext";
+import { useLocationPincode } from "../context/LocationPincodeContext";
+
 
 const page = () => {
   const router = useRouter();
    const { loggedUserData } = useContext(LoggedDataContext); 
+   const { addToCart} = useContext(CartContext);
 
   const [priceRange, setPriceRange] = useState([50, 400]);
   const [sortOption, setSortOption] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
+   const { locationPincode } = useLocationPincode();
+   const [pincode, setPincode] = useState();
+  
+
   // product listing
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
+   const fetchProducts = async () => {
       try {
-        const response = await getProductServ();
+        setPincode(locationPincode)
+        const response = await getProductServ({pincode});
         console.log(response.data);
+        console.log("pincode in shop"+ locationPincode)
         setProducts(response.data || []);
       } catch (error) {
         console.error("Error loading products:", error);
       }
     };
 
+
+  useEffect(() => {
+   
     fetchProducts();
-  }, []);
+     setPincode(locationPincode)
+  }, [locationPincode , pincode]);
 
   // filter product
   useEffect(() => {
@@ -420,6 +433,7 @@ const page = () => {
   }));
 
   addToCartApiCall(productId); // call API only here
+  addToCart({ productId });
 };
 
 const handleIncrease = (productId) => {
@@ -428,6 +442,8 @@ const handleIncrease = (productId) => {
     ...prev,
     [productId]: prev[productId] + 1,
   }));
+  addToCartApiCall(productId);
+    // addToCart({ productId });
 };
 
 const handleDecrease = (productId) => {
@@ -459,7 +475,7 @@ const handleDecrease = (productId) => {
   console.log("user token  " + token)
   
   try {
-    await addProductToCart(payload, productId , token); // productId passed as param
+   const res =   await addProductToWishlist(payload, productId , token); // productId passed as param
     console.log("Product added to wishlist:", productId);
   } catch (error) {
     console.error("Error adding to wishlist:", error);

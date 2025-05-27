@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import { getProductServ } from "../services/product.service";
+import { useLocationPincode } from "../context/LocationPincodeContext";
 
 const ShopFromFarm = () => {
   // const products = [
@@ -67,20 +68,25 @@ const ShopFromFarm = () => {
 
 
       const [products, setProducts] = useState([]);
-    
-        useEffect(() => {
-          const fetchProducts = async () => {
+       const { locationPincode } = useLocationPincode();
+      const [pincode, setPincode] = useState();
+        
+     const fetchProducts = async () => {
             try {
-              const response = await getProductServ();
+                setPincode(locationPincode)
+              const response = await getProductServ({pincode});
               console.log(response.data);
               setProducts(response.data || []);
             } catch (error) {
               console.error("Error loading products:", error);
             }
           };
-      
-          fetchProducts();
-        }, []);
+
+       useEffect(() => {
+          
+           fetchProducts();
+            setPincode(locationPincode)
+         }, [locationPincode , pincode]);
 
 
   return (

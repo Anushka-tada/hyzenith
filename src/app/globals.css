@@ -2647,12 +2647,12 @@ policy css */
 .profile-left > div:hover .profile-left h5{
     color: var(--primary-color);
 }
-.my-details , .my-address{
+.my-details , .my-address , .my-cart{
   background-color: white;
    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
    padding: 3% 5%;
 }
-.my-details h3 ,  .my-address h3{
+.my-details h3 ,  .my-address h3 , .my-cart h3{
   font-family: var(--font-secondary);
   margin-bottom: 20px;
 }

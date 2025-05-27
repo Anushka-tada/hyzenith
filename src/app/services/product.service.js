@@ -30,9 +30,10 @@ const getConfig = () => {
 
 // all products
 
-export const getProductServ = async () => {
+export const getProductServ = async (payload) => {
   try {
-    const response = await axios.post(BASE_URL + "product/list");
+    const response = await axios.post(BASE_URL + "product/list" , payload);
+    console.log(payload)
     return response.data;
   } catch (error) {
     console.error("Error fetching product list:", error);
@@ -87,13 +88,11 @@ export const getCategory = async () => {
 
 
 export async function addProductToCart(payload, productId, token) {
-   
-  
 
   const res = await axios.post(
     `${BASE_URL}user/add-to-cart/${productId}`,
     payload,
-    getConfig()
+    // getConfig()
   );
   return res.data;
 }
@@ -101,16 +100,49 @@ export async function addProductToCart(payload, productId, token) {
 // add to wishlist
 
 export async function addProductToWishlist(payload, productId, token) {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,  
-    },
-  };
 
   const res = await axios.post(
-    `${BASE_URL}user/add-to-wishlist/${productId}`,
-    payload,
-    config
-  );
+    `${BASE_URL}user/add-to-wishlist/${productId}`, payload);
   return res.data;
 }
+
+// cart items
+
+
+export const getCartItems = async (id) => {
+  try {
+    const response = await axios.get(`${BASE_URL}user/cart/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Delete Error:", error);
+    throw error;
+  }
+};
+
+
+// wishlist items
+
+
+export const getListItems = async (id) => {
+  try {
+    const response = await axios.get(`${BASE_URL}user/wishlist/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Delete Error:", error);
+    throw error;
+  }
+};
+
+// remove from cart
+
+
+export const removeCart = async (id) => {
+  try {
+    const response = await axios.get(`${BASE_URL}user/remove-from-cart/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Delete Error:", error);
+    throw error;
+  }
+};
+
