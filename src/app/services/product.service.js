@@ -16,17 +16,17 @@ import { BASE_URL } from ".././utils/apibaseurlConfiguration";
 //   }
 // }
 
-const userData = JSON.parse(localStorage.getItem("user"))
+// const userData = JSON.parse(localStorage.getItem("user"))
 
-const getConfig = () => {
-  return{
-    headers:{
-        "Content-Type": "multipart/form-data",
-       Accept: "application/json",
-       Authorization: `Bearer ${userData.token}`,
-    }
-  }
-}
+// const getConfig = () => {
+//   return{
+//     headers:{
+//         "Content-Type": "multipart/form-data",
+//        Accept: "application/json",
+//        Authorization: `Bearer ${userData.token}`,
+//     }
+//   }
+// }
 
 // all products
 
