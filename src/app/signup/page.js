@@ -8,7 +8,7 @@ import { signUp } from "../services/authentication.service";
 import { otpSend } from "../services/authentication.service";
 import { toast } from "react-toastify";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
 
   const [imageSrc, setImageSrc] = useState(null);
@@ -75,7 +75,7 @@ const handleSubmit = async (e) => {
 
 
       await otpSend(formData.phone);
-     toast.success(res.message);
+     toast.success(response.message);
 
      router.push('/otp-verify');
 
@@ -211,4 +211,4 @@ const handleSubmit = async (e) => {
   );
 };
 
-export default page;
+export default Page;

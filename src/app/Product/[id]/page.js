@@ -253,20 +253,15 @@ const page = () => {
           {/* product details */}
 
           {activeTab === "details" && (
-            <div className="Product Details ">
-              <div className="p-detail">
+            <div className="Product Details d-flex gap-5 ">
+                <div className="basic-details">
+                    <div className="p-detail">
                 <h4 className="">Product Overview</h4>
                 <p >
   {product.shortDescription.replace(/<\/?[^>]+(>|$)/g, "")}
 </p>
 
-              </div>
-              <div className="p-detail">
-                <h4>About the Product</h4>
-                <p>
-               {product.description.replace(/<\/?[^>]+(>|$)/g, "")}
-                </p>
-              </div>
+              </div>           
               <div className="p-detail">
                 <h4>Tax</h4>
                 <p>{product.tax}</p>
@@ -274,6 +269,16 @@ const page = () => {
               <div className="p-detail">
                 <h4>Ingredients</h4>
                 <p>{product.ingredients}</p>
+              </div>
+                </div>
+
+              <div className="log-details">
+                 <div className="p-detail">
+                <h4>About the Product</h4>
+                <p>
+               {product.description.replace(/<\/?[^>]+(>|$)/g, "")}
+                </p>
+              </div>
               </div>
               
             </div>

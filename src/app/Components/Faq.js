@@ -58,7 +58,7 @@ const prev = () => {
 
   return (
     <div className="faq-section text-center py-5">
-      <h2 className="mb-4">Must Read for Hyzenith Business</h2>
+      <h2 className="mb-4">Must Read for Hyzenith</h2>
 
       <div className="d-flex justify-content-center align-items-center flex-wrap">
         {/* Left Icon */}

@@ -94,7 +94,6 @@ const ShopFromFarm = () => {
 
     <div className="from-farm d-flex flex-column align-items-center">
       <h2 className="farm-h">Our Shop</h2>
-      <h1>From our Farm</h1>
 
       <div
         className="Farm-Products d-flex flex-wrap justify-content-center gap-4"

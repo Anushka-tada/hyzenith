@@ -175,7 +175,7 @@ const BulkOrderPage = () => {
 
           <div className="bulk-form d-flex flex-column align-items-center">
             <form onSubmit={handleSubmit}>
-              <h2 className="mb-4">Place Your Bulk Makhana Order</h2>
+              <h2 className="mb-4">Place Your Bulk Order</h2>
 
               {/* First & Last Name */}
               <div className="row mb-2">

@@ -78,8 +78,8 @@ export const CartProvider = ({ children }) => {
 
   const [cartItems, setCartItems] = useState(getInitialCart);
 
-  // Lock map to prevent multiple rapid adds per product
-  const addLocks = useRef({}); 
+  // // Lock map to prevent multiple rapid adds per product
+  // const addLocks = useRef({}); 
 
   useEffect(() => {
     if (typeof window !== "undefined") {
